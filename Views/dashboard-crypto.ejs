@@ -81,8 +81,8 @@
             <div class="col-lg-12">
                 <div class="swiper cryptoSlider">
                     <div class="swiper-wrapper">
-                        <% for (let i=0; i < nftData.length; i++) { %>
-                            <% if (nftData[i].icon !==null) { %>
+                        <% for (const key of Object.keys(nftData)) { %>
+                            <% if (nftData[key].icon !==null) { %>
                                 <div class="swiper-slide">
                                     <div class="card">
                                         <div class="card-body">
@@ -101,28 +101,39 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex align-items-center">
-                                                <img src="https://www.saucerswap.finance<%=nftData[i].icon %>"
+                                                <img src="https://www.saucerswap.finance<%=nftData[key].icon %>"
                                                     class="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="">
                                                 <h6 class="ms-2 mb-0 fs-14">
-                                                    <%=nftData[i].name %>
+                                                    <%=nftData[key].name %>
                                                 </h6>
                                             </div>
                                             <div class="row align-items-end g-0">
                                                 <div class="col-6">
-                                                    <h5 class="mb-1 mt-4">$<%=nftData[i].priceUsd %>
+                                                    <h5 class="mb-1 mt-4">$<%=nftData[key].priceUsd %>
                                                     </h5>
                                                     <p class="text-success fs-13 fw-medium mb-0">
-                                                        <%=nftData[i].id %><span
+                                                        <%=nftData[key].id %><span
                                                                 class="text-muted ms-2 fs-10 text-uppercase">
-                                                                (<%=nftData[i].symbol %>)
+                                                                (<%=nftData[key].symbol %>)
                                                             </span>
                                                     </p>
                                                 </div>
-                                                <div class="col-6">
-                                                    <!-- <div class="apex-charts crypto-widget"
+                                                <% if(priceChangeData[key] !=null) { %>
+                                                    <div class="col-6">
+                                                        <% if(priceChangeData[key]> 0) { %>
+                                                            <h3 class="text-success fs-12 mb-0">
+                                                                +<%=priceChangeData[key].toFixed(2) %>%
+                                                            </h3>
+                                                            <% } else { %>
+                                                                <h3 class="text-danger fs-12 mb-0">
+                                                                    <%=priceChangeData[key].toFixed(2) %>%
+                                                                </h3>
+                                                                <% } %>
+                                                                    <!-- <div class="apex-charts crypto-widget"
                                                         data-colors='["--vz-success", "--vz-transparent"]' dir="ltr"
                                                         id="litecoin_sparkline_charts"></div> -->
-                                                </div>
+                                                    </div>
+                                                    <% } %>
                                             </div><!-- end row -->
                                         </div>
                                     </div>
@@ -140,57 +151,45 @@
                 <div class="card card-height-100">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">Trending</h4>
-                        <!-- <div>
-                            <button type="button" class="btn btn-soft-info btn-sm">
-                                1H
-                            </button>
-                            <button type="button" class="btn btn-soft-info btn-sm">
-                                1D
-                            </button>
-                            <button type="button" class="btn btn-soft-info btn-sm">
-                                7D
-                            </button>
-                            <button type="button" class="btn btn-soft-primary btn-sm">
-                                1M
-                            </button>
-                        </div> -->
-                    </div><!-- end card-header -->
+                    </div>
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush border-dashed mb-0">
+                            <% let index=0; %>
+                                <% for (const key of Object.keys(priceChangeData)) { %>
+                                    <% if (priceChangeData[nftData[key].id] !==null && nftData[key].icon !==null &&
+                                        index < 8) { %>
 
-                            <% for (let i=0; i < 18; i++) { %>
-                                <% if (priceChangeData[nftData[i].id] !==null && nftData[i].icon !==null) { %>
-
-                                    <li class="list-group-item d-flex align-items-center">
-                                        <div class="flex-shrink-0">
-                                            <img src="https://www.saucerswap.finance<%=nftData[i].icon %>"
-                                                class="avatar-xs" alt="">
-                                        </div>
-                                        <div class="flex-grow-1 ms-3">
-                                            <h6 class="fs-14 mb-1">
-                                                <%=nftData[i].name %>
-                                            </h6>
-                                            <p class="text-muted mb-0">
-                                                <%=nftData[i].id %>
-                                            </p>
-                                        </div>
-                                        <div class="flex-shrink-0 text-end">
-                                            <h6 class="fs-14 mb-1">
-                                                $<%=nftData[i].priceUsd.toFixed(5) %>
-                                            </h6>
-                                            <% if(priceChangeData[nftData[i].id]> 0) { %>
-                                                <p class="text-success fs-12 mb-0">
-                                                    +<%=priceChangeData[nftData[i].id].toFixed(2) %>
+                                        <li class="list-group-item d-flex align-items-center">
+                                            <div class="flex-shrink-0">
+                                                <img src="https://www.saucerswap.finance<%=nftData[key].icon %>"
+                                                    class="avatar-xs" alt="">
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="fs-14 mb-1">
+                                                    <%=nftData[key].name %>
+                                                </h6>
+                                                <p class="text-muted mb-0">
+                                                    <%=nftData[key].id %>
                                                 </p>
-                                                <% } else { %>
-                                                    <p class="text-danger fs-12 mb-0">
-                                                        <%=priceChangeData[nftData[i].id].toFixed(2) %>
+                                            </div>
+                                            <div class="flex-shrink-0 text-end">
+                                                <h6 class="fs-14 mb-1">
+                                                    $<%=nftData[key].priceUsd.toFixed(5) %>
+                                                </h6>
+                                                <% if(priceChangeData[key]> 0) { %>
+                                                    <p class="text-success fs-12 mb-0">
+                                                        +<%=priceChangeData[key].toFixed(2) %>%
                                                     </p>
-                                                    <% } %>
-                                        </div>
-                                    </li>
-                                    <% } %>
-                                        <% } %>
+                                                    <% } else { %>
+                                                        <p class="text-danger fs-12 mb-0">
+                                                            <%=priceChangeData[key].toFixed(2) %>%
+                                                        </p>
+                                                        <% } %>
+                                            </div>
+                                        </li>
+                                        <% index++; %>
+                                            <% } %>
+                                                <% } %>
                         </ul>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 const express = require('express');
 const getData = require('../requests/getData');
+const { getDashboardData, getQuotes } = require('./helper');
 const route = express.Router();
 
 
@@ -10,14 +11,12 @@ const route = express.Router();
 //     res.render('index', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards' });
 // })
 route.get('/', async (req, res, next) => {
-    var priceChangeData = await getData("https://api.saucerswap.finance/tokens/price-change");
-    var nftData = await getData("https://api.saucerswap.finance/tokens");
-    const sortedNFTData = Object.entries(nftData)
-        .sort((a, b) => b.priceUsd - a.priceUsd)
-    // const sortedHash = Object.entries(priceChangeData)
-    //     .sort((a, b) => b[1] - a[1])
-    console.log(sortedNFTData)
-    res.render('dashboard-crypto', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards', nftData: nftData, priceChangeData: priceChangeData, sortedNFTData: sortedNFTData });
+    let dashboardData = await getDashboardData()
+    res.render('dashboard-crypto', dashboardData);
+})
+route.get('/getdashboarddata', async (req, res, next) => {
+    let dashboardData = await getQuotes()
+    res.json({ response: dashboardData })
 })
 route.get('/index', (req, res, next) => {
     res.render('index', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards' });

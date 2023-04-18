@@ -1,4 +1,27 @@
-// import puppeteer from 'puppeteer';
+
+async function getData(url = '') {
+    // Default options are marked with *
+    return fetch(url, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        mode: 'no-cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        // credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        // redirect: 'follow', // manual, *follow, error
+        // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        // body: JSON.stringify(body) // body data type must match "Content-Type" header
+    }).then(res => {
+        if (!res.ok) {
+            throw Error("Could not fetch the data for that resource");
+        }
+        return res.json();
+    });
+}
+
+const currentServerURL = "http://localhost:5000"
 
 var html = document.getElementsByTagName("HTML")[0];
 var lightDarkBtn = document.getElementById("mode-switch");
@@ -11,6 +34,13 @@ function setLayoutMode(mode, modeType, modeTypeId, html) {
     }
 }
 
+async function testPuppeteer() {
+    let data = await getData("https://api.coingecko.com/api/v3/coins/hedera-hashgraph/ohlc?vs_currency=usd&days=5")
+    console.log(data)
+}
+
+testPuppeteer()
+
 if (lightDarkBtn) {
     lightDarkBtn.addEventListener("click", function (event) {
         html.hasAttribute("data-layout-mode") && html.getAttribute("data-layout-mode") == "dark" ?
@@ -18,45 +48,3 @@ if (lightDarkBtn) {
             setLayoutMode("data-layout-mode", "dark", "layout-mode-dark", html);
     });
 }
-
-// const getQuotes = async () => {
-//     // Start a Puppeteer session with:
-//     // - a visible browser (`headless: false` - easier to debug because you'll see the browser in action)
-//     // - no default viewport (`defaultViewport: null` - website page will in full width and height)
-//     const browser = await puppeteer.launch({
-//         headless: false,
-//         defaultViewport: null,
-//     });
-
-//     // Open a new page
-//     const page = await browser.newPage();
-
-//     // On this new page:
-//     // - open the "http://quotes.toscrape.com/" website
-//     // - wait until the dom content is loaded (HTML is ready)
-//     await page.goto("http://quotes.toscrape.com/", {
-//         waitUntil: "domcontentloaded",
-//     });
-
-//     // Get page data
-//     const quotes = await page.evaluate(() => {
-//         // Fetch the first element with class "quote"
-//         const quote = document.querySelector(".quote");
-
-//         // Fetch the sub-elements from the previously fetched quote element
-//         // Get the displayed text and return it (`.innerText`)
-//         const text = quote.querySelector(".text").innerText;
-//         const author = quote.querySelector(".author").innerText;
-
-//         return { text, author };
-//     });
-
-//     // Display the quotes
-//     console.log(quotes);
-
-//     // Close the browser
-//     await browser.close();
-// };
-
-// // Start the scraping
-// getQuotes();

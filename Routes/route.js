@@ -10,9 +10,14 @@ const route = express.Router();
 //     res.render('index', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards' });
 // })
 route.get('/', async (req, res, next) => {
+    var priceChangeData = await getData("https://api.saucerswap.finance/tokens/price-change");
     var nftData = await getData("https://api.saucerswap.finance/tokens");
-    console.log(nftData)
-    res.render('dashboard-crypto', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards', nftData: nftData });
+    const sortedNFTData = Object.entries(nftData)
+        .sort((a, b) => b.priceUsd - a.priceUsd)
+    // const sortedHash = Object.entries(priceChangeData)
+    //     .sort((a, b) => b[1] - a[1])
+    console.log(sortedNFTData)
+    res.render('dashboard-crypto', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards', nftData: nftData, priceChangeData: priceChangeData, sortedNFTData: sortedNFTData });
 })
 route.get('/index', (req, res, next) => {
     res.render('index', { title: 'Dashboard', page_title: 'Dashboard', folder: 'Dashboards' });

@@ -140,7 +140,7 @@
                 <div class="card card-height-100">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">Trending</h4>
-                        <div>
+                        <!-- <div>
                             <button type="button" class="btn btn-soft-info btn-sm">
                                 1H
                             </button>
@@ -153,88 +153,44 @@
                             <button type="button" class="btn btn-soft-primary btn-sm">
                                 1M
                             </button>
-                        </div>
+                        </div> -->
                     </div><!-- end card-header -->
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush border-dashed mb-0">
-                            <li class="list-group-item d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/svg/crypto-icons/btc.svg" class="avatar-xs" alt="">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-14 mb-1">Bitcoin</h6>
-                                    <p class="text-muted mb-0">$18.7 Billions</p>
-                                </div>
-                                <div class="flex-shrink-0 text-end">
-                                    <h6 class="fs-14 mb-1">$12,863.08</h6>
-                                    <p class="text-success fs-12 mb-0">+$67.21 (+4.33%)</p>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/svg/crypto-icons/eth.svg" class="avatar-xs" alt="">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-14 mb-1">Eathereum</h6>
-                                    <p class="text-muted mb-0">$27.4 Billions</p>
-                                </div>
-                                <div class="flex-shrink-0 text-end">
-                                    <h6 class="fs-14 mb-1">$08,256.04</h6>
-                                    <p class="text-success fs-12 mb-0">+$51.19<span class="ms-1">(+5.64%)</span></p>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/svg/crypto-icons/aave.svg" class="avatar-xs" alt="">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-14 mb-1">Avalanche</h6>
-                                    <p class="text-muted mb-0">$12.9 Billions</p>
-                                </div>
-                                <div class="flex-shrink-0 text-end">
-                                    <h6 class="fs-14 mb-1">$11,896.13</h6>
-                                    <p class="text-danger fs-12 mb-0">-$59.01<span class="ms-1">(-4.08%)</span></p>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/svg/crypto-icons/doge.svg" class="avatar-xs" alt="">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-14 mb-1">Dogecoin</h6>
-                                    <p class="text-muted mb-0">$09.5 Billions</p>
-                                </div>
-                                <div class="flex-shrink-0 text-end">
-                                    <h6 class="fs-14 mb-1">$15,999.06</h6>
-                                    <p class="text-success fs-12 mb-0">+$74.05<span class="ms-1">(+3.12%)</span></p>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/svg/crypto-icons/bnb.svg" class="avatar-xs" alt="">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-14 mb-1">Binance</h6>
-                                    <p class="text-muted mb-0">$14.2 Billions</p>
-                                </div>
-                                <div class="flex-shrink-0 text-end">
-                                    <h6 class="fs-14 mb-1">$13,786.18</h6>
-                                    <p class="text-danger fs-12 mb-0">-$61.05<span class="ms-1">(-9.22%)</span></p>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex align-items-center">
-                                <div class="flex-shrink-0">
-                                    <img src="assets/images/svg/crypto-icons/ltc.svg" class="avatar-xs" alt="">
-                                </div>
-                                <div class="flex-grow-1 ms-3">
-                                    <h6 class="fs-14 mb-1">Litecoin</h6>
-                                    <p class="text-muted mb-0">$09.5 Billions</p>
-                                </div>
-                                <div class="flex-shrink-0 text-end">
-                                    <h6 class="fs-14 mb-1">$10,604.27</h6>
-                                    <p class="text-success fs-12 mb-0">+$76.12<span class="ms-1">(+4.92%)</span></p>
-                                </div>
-                            </li>
+
+                            <% for (let i=0; i < 18; i++) { %>
+                                <% if (priceChangeData[nftData[i].id] !==null && nftData[i].icon !==null) { %>
+
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <img src="https://www.saucerswap.finance<%=nftData[i].icon %>"
+                                                class="avatar-xs" alt="">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h6 class="fs-14 mb-1">
+                                                <%=nftData[i].name %>
+                                            </h6>
+                                            <p class="text-muted mb-0">
+                                                <%=nftData[i].id %>
+                                            </p>
+                                        </div>
+                                        <div class="flex-shrink-0 text-end">
+                                            <h6 class="fs-14 mb-1">
+                                                <%=nftData[i].priceUsd %>
+                                            </h6>
+                                            <% if(priceChangeData[nftData[i].id]> 0) { %>
+                                                <p class="text-success fs-12 mb-0">
+                                                    +<%=priceChangeData[nftData[i].id].toFixed(2) %>
+                                                </p>
+                                                <% } else { %>
+                                                    <p class="text-danger fs-12 mb-0">
+                                                        <%=priceChangeData[nftData[i].id].toFixed(2) %>
+                                                    </p>
+                                                    <% } %>
+                                        </div>
+                                    </li>
+                                    <% } %>
+                                        <% } %>
                         </ul>
                     </div>
                 </div>
@@ -243,7 +199,7 @@
                 <div class="card card-height-100">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">New Tokens</h4>
-                        <div>
+                        <!-- <div>
                             <button type="button" class="btn btn-soft-info btn-sm">
                                 1H
                             </button>
@@ -256,7 +212,7 @@
                             <button type="button" class="btn btn-soft-primary btn-sm">
                                 1M
                             </button>
-                        </div>
+                        </div> -->
                     </div><!-- end card-header -->
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush border-dashed mb-0">
@@ -346,7 +302,7 @@
                 <div class="card card-height-100">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">Top Pools</h4>
-                        <div>
+                        <!-- <div>
                             <button type="button" class="btn btn-soft-info btn-sm">
                                 1H
                             </button>
@@ -359,7 +315,7 @@
                             <button type="button" class="btn btn-soft-primary btn-sm">
                                 1M
                             </button>
-                        </div>
+                        </div> -->
                     </div><!-- end card-header -->
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush border-dashed mb-0">

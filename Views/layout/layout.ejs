@@ -1,38 +1,35 @@
 <!DOCTYPE html>
-<html
-  lang="en"
-  data-layout="vertical"
-  data-topbar="light"
-  data-sidebar="dark"
-  data-sidebar-size="lg"
->
-  <head>
-    <meta charset="utf-8" />
-    <title>HashChads</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="Hashchads Hedera Analytics" name="description" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" />
-    <%- HeaderCss %> <%- include ('./head-css.ejs') %>
-  </head>
+<html lang="en" data-layout-mode="dark" data-layout="vertical" data-topbar="light" data-sidebar="dark"
+  data-sidebar-size="lg">
 
-  <body>
-    <div>
-      <header>
-        <div class="navbar navbar-light shadow-sm">
-          <div class="container">
-            <a href="#" class="navbar-brand">
-              <strong>Hedera HashChads</strong>
-            </a>
-          </div>
+<head>
+  <meta charset="utf-8" />
+  <title>HashChads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content="Hashchads Hedera Analytics" name="description" />
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <%- HeaderCss %> <%- include ('./head-css.ejs') %>
+</head>
+
+<body>
+  <div>
+    <header>
+      <div class="navbar navbar-dark">
+        <div class="container">
+          <a href="#" class="navbar-brand">
+            <strong>Hedera HashChads</strong>
+          </a>
         </div>
-      </header>
-      <div class="m-3">
-        <%- body%> <%- include ('./vendor-scripts') %> <%- FooterJs %>
       </div>
+    </header>
+    <div class="m-3">
+      <%- body%> <%- include ('./vendor-scripts') %> <%- FooterJs %>
     </div>
+  </div>
 
-    <!-- App js -->
-    <script src="assets/js/app.js"></script>
-  </body>
+  <!-- App js -->
+  <script src="assets/js/app.js"></script>
+</body>
+
 </html>

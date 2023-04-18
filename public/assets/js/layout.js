@@ -15,13 +15,13 @@ File: Layout Js File
 
         var attributesValue = document.documentElement.attributes;
         var CurrentLayoutAttributes = {};
-        Object.entries(attributesValue).forEach(function(key) {
+        Object.entries(attributesValue).forEach(function (key) {
             if (key[1] && key[1].nodeName && key[1].nodeName != "undefined") {
                 var nodeKey = key[1].nodeName;
                 CurrentLayoutAttributes[nodeKey] = key[1].nodeValue;
             }
-          });
-        if(sessionStorage.getItem('defaultAttribute') !== JSON.stringify(CurrentLayoutAttributes)) {
+        });
+        if (sessionStorage.getItem('defaultAttribute') !== JSON.stringify(CurrentLayoutAttributes)) {
             sessionStorage.clear();
             window.location.reload();
         } else {
@@ -38,7 +38,7 @@ File: Layout Js File
             isLayoutAttributes['data-topbar'] = sessionStorage.getItem('data-topbar');
             isLayoutAttributes['data-preloader'] = sessionStorage.getItem('data-preloader');
             isLayoutAttributes['data-body-image'] = sessionStorage.getItem('data-body-image');
-            
+
             Object.keys(isLayoutAttributes).forEach(function (x) {
                 if (isLayoutAttributes[x] && isLayoutAttributes[x]) {
                     document.documentElement.setAttribute(x, isLayoutAttributes[x]);

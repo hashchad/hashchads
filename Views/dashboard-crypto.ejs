@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="flex-shrink-0 text-end">
                                             <h6 class="fs-14 mb-1">
-                                                <%=nftData[i].priceUsd %>
+                                                $<%=nftData[i].priceUsd.toFixed(5) %>
                                             </h6>
                                             <% if(priceChangeData[nftData[i].id]> 0) { %>
                                                 <p class="text-success fs-12 mb-0">

@@ -15,11 +15,15 @@
 <body>
   <div>
     <header>
-      <div class="navbar navbar-dark">
+      <div class="navbar shadow-lg">
         <div class="container">
           <a href="#" class="navbar-brand">
-            <strong>Hedera HashChads</strong>
+            <h5 class="mb-0">HEDERA HASHCHADS</h5>
           </a>
+          <button id="mode-switch" type="button"
+            class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
+            <i class='bx bx-moon fs-22'></i>
+          </button>
         </div>
       </div>
     </header>
@@ -30,6 +34,29 @@
 
   <!-- App js -->
   <script src="assets/js/app.js"></script>
+  <script>
+    var html = document.getElementsByTagName("HTML")[0];
+    var lightDarkBtn = document.getElementById("mode-switch");
+
+    function setLayoutMode(mode, modeType, modeTypeId, html) {
+      var isModeTypeId = document.getElementById(modeTypeId);
+      html.setAttribute(mode, modeType);
+      if (isModeTypeId) {
+        document.getElementById(modeTypeId).click();
+      }
+    }
+
+    console.log(lightDarkBtn)
+    if (lightDarkBtn) {
+      console.log("Meets criteria")
+      lightDarkBtn.addEventListener("click", function (event) {
+        console.log("button has been clicked bruh")
+        html.hasAttribute("data-layout-mode") && html.getAttribute("data-layout-mode") == "dark" ?
+          setLayoutMode("data-layout-mode", "light", "layout-mode-light", html) :
+          setLayoutMode("data-layout-mode", "dark", "layout-mode-dark", html);
+      });
+    }
+  </script>
 </body>
 
 </html>

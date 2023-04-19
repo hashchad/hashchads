@@ -7,6 +7,59 @@ File: Crypto Dashboard init js
 */
 
 
+var html = document.getElementsByTagName("HTML")[0];
+var lightDarkBtn = document.getElementById("mode-switch");
+var sevenDayButton = document.getElementById("7");
+var oneMonthButton = document.getElementById("30");
+var oneYearButton = document.getElementById("365");
+var allButton = document.getElementById("max");
+
+function setLayoutMode(mode, modeType, modeTypeId, html) {
+  var isModeTypeId = document.getElementById(modeTypeId);
+  html.setAttribute(mode, modeType);
+  if (isModeTypeId) {
+    document.getElementById(modeTypeId).click();
+  }
+}
+
+function makeAllButtonsInactive() {
+  [sevenDayButton, oneMonthButton, oneYearButton, allButton].forEach((button) => {
+    if (button.classList.contains("active")) {
+      button.classList.remove("active")
+    }
+  })
+}
+
+if (lightDarkBtn) {
+  lightDarkBtn.addEventListener("click", function (event) {
+    html.hasAttribute("data-layout-mode") && html.getAttribute("data-layout-mode") == "dark" ?
+      setLayoutMode("data-layout-mode", "light", "layout-mode-light", html) :
+      setLayoutMode("data-layout-mode", "dark", "layout-mode-dark", html);
+  });
+}
+sevenDayButton.addEventListener("click", function (event) {
+  makeAllButtonsInactive()
+  sevenDayButton.classList.add("active")
+  generateMarketsChart("7")
+});
+oneMonthButton.addEventListener("click", function (event) {
+  makeAllButtonsInactive()
+  oneMonthButton.classList.add("active")
+  generateMarketsChart("30")
+});
+oneYearButton.addEventListener("click", function (event) {
+  makeAllButtonsInactive()
+  oneYearButton.classList.add("active")
+  generateMarketsChart("365")
+});
+allButton.addEventListener("click", function (event) {
+  makeAllButtonsInactive()
+  allButton.classList.add("active")
+  generateMarketsChart("max")
+});
+
+
+
 // Example POST method implementation:
 async function getData(url = '') {
   // Default options are marked with *
@@ -142,14 +195,16 @@ if (donutchartportfolioColors) {
   chart.render();
 }
 
-async function generateMarketsChart() {
+async function generateMarketsChart(numDays = '7') {
 
-  let dataURL = "https://api.coingecko.com/api/v3/coins/hedera-hashgraph/ohlc?vs_currency=usd&days=7";
+  // let current = document.querySelector("#Market_chart")
+  // current.removeChild()
+
+  let dataURL = "https://api.coingecko.com/api/v3/coins/hedera-hashgraph/ohlc?vs_currency=usd&days=" + numDays;
   console.log("Entered chart")
   let res = await getData(dataURL)
   console.log(res)
   var data = []
-
   res.forEach(element => {
     data.push({ x: new Date(element[0]), y: [element[1], element[2], element[3], element[4]] })
   });

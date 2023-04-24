@@ -47,10 +47,15 @@ const Widgets1 = ({ nftData, priceChangeData }) => {
                                             <div className="d-flex align-items-center">
                                                 <img src={"https://www.saucerswap.finance" + nftData[item].icon} className="bg-light rounded-circle p-1 avatar-xs img-fluid" alt="" />
                                                 <h6 className="ms-2 mb-0 fs-14">{nftData[item].name}</h6>
+                                                {nftData[item].dueDiligenceComplete == false && <span className="text-danger">
+                                                    <h2><i title='Due diligence incomplete!' className="mx-2 text-danger bi bi-exclamation-triangle-fill"></i></h2>
+                                                </span>}
                                             </div>
                                             <h5 className="mb-1 mt-4">${nftData[item].priceUsd.toFixed(3)}</h5>
                                             <h5 className="mb-1 mt-1 text-success">{nftData[item].id} ({nftData[item].symbol})</h5>
-                                            <h5 className="mb-1 mt-1">TVL: { }</h5>
+                                            {nftData[item].extra_data && <h5 className="mb-1 mt-1">TVL:
+                                                {/* ${Number.parseFloat(nftData[item]["extra_data"]["total_supply"]) * Number.parseFloat(nftData[item]["priceUsd"])} */}
+                                            </h5>}
                                             <h5 className="mb-1 mt-1">Keys: { }</h5>
                                         </div>
                                         <div>

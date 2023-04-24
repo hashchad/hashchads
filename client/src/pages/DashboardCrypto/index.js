@@ -30,7 +30,8 @@ const DashboardCrypto = () => {
         async function getMoreData(id) {
             let moreNFTData = await getData(base_url + id);
             newNFTData[id]["extra_data"] = moreNFTData
-            console.log(newNFTData)
+            console.log("more data added...")
+            console.log(newNFTData[id])
             setNftData(newNFTData)
         }
 

@@ -38,7 +38,7 @@ const NewTokensDiv = ({ nftData, priceChangeData }) => {
                 </div>
                 <div className="card-body p-0">
                     <ul className="list-group list-group-flush border-dashed mb-0">
-                        {Object.keys(rankedData).map((key, index) =>
+                        {rankedData && Object.keys(rankedData).map((key, index) =>
                             priceChangeData[key] != null && nftData[key].icon !== null && index < 11 &&
                             <li key={index} className="list-group-item d-flex align-items-center">
                                 <div className="flex-shrink-0">

@@ -1,6 +1,34 @@
+import { useEffect, useState } from "react"
 
 
 const NewTokensDiv = ({ nftData, priceChangeData }) => {
+
+    const [rankedData, setRankedData] = useState(null)
+
+
+    useEffect(() => {
+
+        // Convert the object into an array of arrays
+        const dataArray = Object.entries(nftData);
+
+        // Sort the array by creation_timestamp
+        dataArray.sort((a, b) => {
+            if (a[1].extra_data) {
+                return a[1].extra_data.created_timestamp + b[1].extra_data.created_timestamp;
+            }
+        });
+
+        let dataArraySortedHash = {};
+
+        dataArray.forEach(([key, value]) => {
+            dataArraySortedHash[key] = value;
+        });
+
+        // The sorted array is now in ascending order by creation_timestamp
+        console.log(dataArraySortedHash)
+        setRankedData(dataArraySortedHash)
+    }, [nftData])
+
 
     return (
         <div className="col-xxl-4 col-lg-4">
@@ -10,7 +38,7 @@ const NewTokensDiv = ({ nftData, priceChangeData }) => {
                 </div>
                 <div className="card-body p-0">
                     <ul className="list-group list-group-flush border-dashed mb-0">
-                        {Object.keys(priceChangeData).map((key, index) =>
+                        {Object.keys(rankedData).map((key, index) =>
                             priceChangeData[key] != null && nftData[key].icon !== null && index < 11 &&
                             <li key={index} className="list-group-item d-flex align-items-center">
                                 <div className="flex-shrink-0">

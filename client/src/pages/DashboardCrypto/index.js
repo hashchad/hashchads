@@ -38,19 +38,20 @@ const DashboardCrypto = () => {
         var basePriceChangeData = await getData("https://api.saucerswap.finance/tokens/price-change");
         const priceChangeDataSorted = Object.entries(basePriceChangeData)
             .sort((a, b) => b[1] - a[1])
-        let priceChangeDataSortedHash = {};
 
         var baseNftData = await getData("https://api.saucerswap.finance/tokens");
         var newNFTData = {}
         baseNftData.forEach((element) => {
-            if (element.priceUsd > 0.05) {
+            if (element.priceUsd > 0.01) {
                 newNFTData[element.id] = element
                 getMoreData(element.id)
             }
         })
 
+        let priceChangeDataSortedHash = {};
+
         priceChangeDataSorted.forEach(([key, value]) => {
-            if (newNFTData[key] && newNFTData[key].priceUsd > 0.05) {
+            if (newNFTData[key] && newNFTData[key].priceUsd > 0.01) {
                 priceChangeDataSortedHash[key] = value;
             }
         });

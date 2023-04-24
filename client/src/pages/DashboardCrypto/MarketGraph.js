@@ -9,6 +9,7 @@ const MarketGraph = () => {
     const dispatch = useDispatch();
 
     const [chartData, setchartData] = useState([]);
+    const [numDays, setNumDays] = useState("7");
     // var marketData = [];
 
     const { marketData } = useSelector(state => ({
@@ -16,6 +17,7 @@ const MarketGraph = () => {
     }));
 
     async function fetchMarketData(numDays) {
+        setNumDays(numDays)
         let dataURL = "https://api.coingecko.com/api/v3/coins/hedera-hashgraph/ohlc?vs_currency=usd&days=" + numDays;
         let res = await getData(dataURL)
         let newData = []
@@ -27,7 +29,7 @@ const MarketGraph = () => {
     }
 
     useEffect(() => {
-        fetchMarketData("7")
+        fetchMarketData(numDays)
     }, [marketData]);
 
     const onChangeChartPeriod = pType => {
@@ -49,16 +51,16 @@ const MarketGraph = () => {
                                 {/* <button type="button" className="btn btn-soft-secondary btn-sm" onClick={() => { onChangeChartPeriod("hour"); }}>
                                     1H
                                 </button> */}
-                                <button type="button" className="btn btn-soft-secondary btn-sm" onClick={() => { fetchMarketData("7"); }}>
+                                <button type="button" className={`btn btn-soft-secondary btn-sm ${numDays == "7" ? " active" : ""}`} onClick={() => { fetchMarketData("7"); }}>
                                     7D
                                 </button>
-                                <button type="button" className="btn btn-soft-secondary btn-sm" onClick={() => { fetchMarketData("30"); }}>
+                                <button type="button" className={`btn btn-soft-secondary btn-sm ${numDays == "30" ? " active" : ""}`} onClick={() => { fetchMarketData("30"); }}>
                                     1M
                                 </button>
-                                <button type="button" className="btn btn-soft-secondary btn-sm" onClick={() => { fetchMarketData("365"); }}>
+                                <button type="button" className={`btn btn-soft-secondary btn-sm ${numDays == "365" ? " active" : ""}`} onClick={() => { fetchMarketData("365"); }}>
                                     1Y
                                 </button>
-                                <button type="button" className="btn btn-soft-primary btn-sm" onClick={() => { fetchMarketData("max"); }}>
+                                <button type="button" className={`btn btn-soft-secondary btn-sm ${numDays == "max" ? " active" : ""}`} onClick={() => { fetchMarketData("max"); }}>
                                     ALL
                                 </button>
                             </div>

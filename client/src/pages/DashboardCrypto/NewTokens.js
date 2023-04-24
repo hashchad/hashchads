@@ -2,8 +2,6 @@
 
 const NewTokensDiv = ({ nftData, priceChangeData }) => {
 
-    Object.keys(priceChangeData).map((key, index) => console.log(index))
-
     return (
         <div className="col-xxl-4 col-lg-4">
             <div className="card card-height-100">

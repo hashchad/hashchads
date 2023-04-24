@@ -51,7 +51,7 @@ const Widgets1 = ({ nftData, priceChangeData }) => {
                                             <h5 className="mb-1 mt-4">${nftData[item].priceUsd.toFixed(3)}</h5>
                                             <h5 className="mb-1 mt-1 text-success">{nftData[item].id} ({nftData[item].symbol})</h5>
                                             <h5 className="mb-1 mt-1">TVL: { }</h5>
-                                            <h5 className="mb-1 mt-1">keys: { }</h5>
+                                            <h5 className="mb-1 mt-1">Keys: { }</h5>
                                         </div>
                                         <div>
                                             <h5 className="mb-1 mt-2">24hr%</h5>
@@ -61,6 +61,8 @@ const Widgets1 = ({ nftData, priceChangeData }) => {
                                                 :
                                                 <h5 className={"mb-0 text-danger"}>{priceChangeData[item].toFixed(2)}%<i className={"align-middle me-1 " + "mdi mdi-trending-down"}></i></h5>
                                             }
+                                            <h5 className="mb-1 mt-3">Holders: XXXXX</h5>
+                                            <h5 className="mb-1 mt-1">Fees: NONE</h5>
                                         </div>
                                     </div>
                                 </CardBody>

@@ -27,10 +27,13 @@ const DashboardCrypto = () => {
 
         let base_url = "https://mainnet-public.mirrornode.hedera.com/api/v1/tokens/"
 
-        // async function getMoreData(id) {
-        //   let moreNFTData = await getData(base_url + id);
-        //   newNFTData[id]["extra_data"] = moreNFTData
-        // }
+        async function getMoreData(id) {
+            let moreNFTData = await getData(base_url + id);
+            newNFTData[id]["extra_data"] = moreNFTData
+            console.log(newNFTData)
+            setNftData(newNFTData)
+        }
+
         var basePriceChangeData = await getData("https://api.saucerswap.finance/tokens/price-change");
         const priceChangeDataSorted = Object.entries(basePriceChangeData)
             .sort((a, b) => b[1] - a[1])
@@ -41,6 +44,7 @@ const DashboardCrypto = () => {
         baseNftData.forEach((element) => {
             if (element.priceUsd > 0.05) {
                 newNFTData[element.id] = element
+                getMoreData(element.id)
             }
         })
 

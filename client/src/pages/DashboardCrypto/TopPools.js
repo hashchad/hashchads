@@ -1,6 +1,31 @@
+import { useEffect, useState } from "react"
+import getData from "../../requests/getData";
 
 
-const TopPoolsDiv = ({ nftData, priceChangeData }) => {
+const TopPoolsDiv = () => {
+
+    const [poolsData, setPoolsData] = useState(null);
+    const [poolsPriceChangeData, setPoolsPriceChangeData] = useState(null);
+
+    useEffect((() => {
+        async function setupData() {
+
+            let pools_daily_vol_url = "https://api.saucerswap.finance/pools/daily-volumes"
+            setPoolsPriceChangeData(await getData(pools_daily_vol_url))
+
+            let pools_url = "https://api.saucerswap.finance/pools"
+            let poolData = await getData(pools_url)
+            poolData.sort((a, b) => Number.parseFloat(poolsPriceChangeData[b.id.toString()]) - Number.parseFloat(poolsPriceChangeData[a.id.toString()]));
+            console.log(poolData[0])
+            setPoolsData(poolData.slice(0, 11))
+            // [name, liquidity, volume(24hr), volume(7d), daily fees, lp reward]
+        }
+        setupData()
+    }), {})
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     return (
         <div className="col-xxl-4 col-lg-4">
@@ -10,37 +35,34 @@ const TopPoolsDiv = ({ nftData, priceChangeData }) => {
                 </div>
                 <div className="card-body p-0">
                     <ul className="list-group list-group-flush border-dashed mb-0">
-                        {Object.keys(priceChangeData).map((key, index) =>
-                            priceChangeData[key] != null && nftData[key].icon !== null && index < 11 &&
-                            <li key={index} className="list-group-item d-flex align-items-center">
-                                <div className="flex-shrink-0">
-                                    <img src={"https://www.saucerswap.finance" + nftData[key].icon}
-                                        className="avatar-xs" alt="" />
+                        {poolsData && poolsData.map((key, index) =>
+                            poolsPriceChangeData[key.id] && <li key={index} className="list-group-item d-flex align-items-center">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src={"https://www.saucerswap.finance" + key.tokenA.icon} alt="Avatar 1" class="avatar-xs" />
+                                    </div>
+                                    <div class="col-3">
+                                        <img src={"https://www.saucerswap.finance" + key.tokenB.icon} alt="Avatar 2" class="avatar-xs" />
+                                    </div>
                                 </div>
+                                {/* <div className="flex-shrink-0"> */}
+                                {/* <img src={"https://www.saucerswap.finance" + nftData[key].icon}
+                                        className="avatar-xs" alt="" /> */}
+                                {/* </div> */}
                                 <div className="flex-grow-1 ms-3">
                                     <h6 className="fs-14 mb-1">
-                                        {nftData[key].name}
+                                        {key.lpToken.name}
                                     </h6>
                                     <p className="text-muted mb-0">
-                                        {nftData[key].id}
+                                        {key.lpToken.id}
                                     </p>
                                 </div>
                                 <div className="flex-shrink-0 text-end">
-                                    <h6 className="fs-14 mb-1">
-                                        ${nftData[key].priceUsd.toFixed(5)}
+                                    <h6 className="fs-18 mb-1">
+                                        ${numberWithCommas(Number.parseInt(poolsPriceChangeData[key.id.toString()]))}
                                     </h6>
-                                    {priceChangeData[key] > 0 ?
-                                        <h6 className="fs-14 text-success fs-12 mb-0">
-                                            +{priceChangeData[key].toFixed(2)} %
-                                        </h6>
-                                        :
-                                        <h6 className="fs-14 text-danger fs-12 mb-0">
-                                            {priceChangeData[key].toFixed(2)} %
-                                        </h6>
-                                    }
                                 </div>
                             </li>
-
                         )}
                     </ul>
                 </div>

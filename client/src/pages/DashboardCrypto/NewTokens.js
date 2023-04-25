@@ -25,7 +25,7 @@ const NewTokensDiv = ({ nftData, priceChangeData }) => {
         });
 
         // The sorted array is now in ascending order by creation_timestamp
-        console.log(dataArraySortedHash)
+        // console.log(dataArraySortedHash)
         setRankedData(dataArraySortedHash)
     }, [nftData])
 

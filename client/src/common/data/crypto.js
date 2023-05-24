@@ -63,7 +63,7 @@ const cryptoSlider = [
         change: "+13.11%",
         changeClass: "success",
         coinName: "btc",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Bitcoin",
             data: [85, 68, 35, 90, 8, 11, 26, 54]
@@ -77,7 +77,7 @@ const cryptoSlider = [
         change: "+15.08%",
         changeClass: "success",
         coinName: "ltc",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Litecoin",
             data: [25, 50, 41, 87, 12, 36, 9, 54]
@@ -91,7 +91,7 @@ const cryptoSlider = [
         change: "+08.57%",
         changeClass: "success",
         coinName: "etc",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Eathereum",
             data: [36, 21, 65, 22, 35, 50, 29, 44]
@@ -119,7 +119,7 @@ const cryptoSlider = [
         change: "+12.07%",
         changeClass: "success",
         coinName: "dash",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Dash",
             data: [24, 68, 39, 86, 29, 42, 11, 58]
@@ -133,7 +133,7 @@ const cryptoSlider = [
         change: "+14.99%",
         changeClass: "success",
         coinName: "usdt",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Dash",
             data: [13, 76, 12, 85, 25, 60, 9, 54]

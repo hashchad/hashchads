@@ -173,6 +173,9 @@ div{
     }
 }
 
+
+
+
 .dt-buttons {
     button.dt-button,
     div.dt-button,
@@ -182,15 +185,4 @@ div{
         background: var(--#{$prefix}light);
         color: var(--#{$prefix}gray-800);
     }
-}
-
-.rdt_Table{
-	.rdt_TableBody{
-        .rdt_TableRow{
-        background-color :$table-bg;
-        color: $table-color;
-        border-bottom-color :$table-border-color;
-        outline-color :$table-border-color;
-        }
-  }
 }

@@ -13,9 +13,6 @@
 
 .dropdown-menu {
     box-shadow: $box-shadow-lg;
-    animation-name: DropDownSlide;
-    animation-duration: .3s;
-    animation-fill-mode: both;
     position: absolute;
     z-index: 1000;
 
@@ -23,30 +20,6 @@
         padding: 20px;
         left: 0 !important;
         right: 0 !important;
-    }
-
-    &[data-popper-placement="top-start"] {
-        animation-name: DropDownSlideDown;
-    }
-}
-
-@keyframes DropDownSlide {
-    100% {
-        margin-top: -1px;
-    }
-
-    0% {
-        margin-top: 8px;
-    }
-}
-
-@keyframes DropDownSlideDown {
-    100% {
-        margin-bottom: 0;
-    }
-
-    0% {
-        margin-bottom: 8px;
     }
 }
 

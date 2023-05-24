@@ -1,24 +1,47 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as ReactDOMClient from "react-dom/client";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./slices";
 
-const store = configureStore({ reducer: rootReducer, devTools: true });
+import { configureStore } from "./store";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import LocalStorageContextProvider, { Updater as LocalStorageContextUpdater } from './contexts/LocalStorage'
+import GlobalDataContextProvider from './contexts/GlobalData'
+import ApplicationContextProvider from './contexts/Application'
+import TokenDataContextProvider from './contexts/TokenData'
+import PairDataContextProvider from './contexts/PairData'
 
+function Updaters() {
+  return (
+    <>
+      <LocalStorageContextUpdater />
+    </>
+  )
+}
+
+const root = ReactDOMClient.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <React.Fragment>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <App />
-      </BrowserRouter>
-    </React.Fragment>
-  </Provider>
+  <LocalStorageContextProvider>
+    <ApplicationContextProvider>
+      <TokenDataContextProvider>
+        <GlobalDataContextProvider>
+          <PairDataContextProvider>
+            <Provider store={configureStore({})}>
+              <Updaters />
+              <React.Fragment>
+                {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
+                <App />
+                {/* </BrowserRouter> */}
+              </React.Fragment>
+            </Provider>
+          </PairDataContextProvider>
+        </GlobalDataContextProvider>
+      </TokenDataContextProvider>
+    </ApplicationContextProvider>
+  </LocalStorageContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

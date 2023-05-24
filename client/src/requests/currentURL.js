@@ -1,1 +1,0 @@
-const currentServerURL = "http://localhost:5000"

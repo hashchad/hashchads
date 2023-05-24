@@ -11,7 +11,7 @@ import {
   useRowSelect
 } from "react-table";
 import { Table, Row, Col, Button, Input, CardBody } from "reactstrap";
-import { DefaultColumnFilter } from "./filters";
+import { Filter, DefaultColumnFilter } from "./filters";
 import {
   ProductsGlobalFilter,
   CustomersGlobalFilter,
@@ -23,11 +23,12 @@ import {
   InvoiceListGlobalSearch,
   TicketsListGlobalFilter,
   NFTRankingGlobalFilter,
-  TaskListGlobalFilter,
+  TaskListGlobalFilter
 } from "../../Components/Common/GlobalSearchFilter";
 
 // Define a default UI for filtering
 function GlobalFilter({
+  preGlobalFilteredRows,
   globalFilter,
   setGlobalFilter,
   isCustomerFilter,
@@ -43,6 +44,7 @@ function GlobalFilter({
   isLeadsFilter,
   SearchPlaceholder
 }) {
+  const count = preGlobalFilteredRows.length;
   const [value, setValue] = React.useState(globalFilter);
   const onChange = useAsyncDebounce((value) => {
     setGlobalFilter(value || undefined);
@@ -52,8 +54,8 @@ function GlobalFilter({
     <React.Fragment>
       <CardBody className="border border-dashed border-end-0 border-start-0">
         <form>
-          <Row>
-            <Col sm={5}>
+          <Row className="g-3">
+            <Col>
               <div className={(isProductsFilter || isContactsFilter || isCompaniesFilter || isNFTRankingFilter) ? "search-box me-2 mb-2 d-inline-block" : "search-box me-2 mb-2 d-inline-block col-12"}>
                 <input
                   onChange={(e) => {

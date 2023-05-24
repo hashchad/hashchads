@@ -5,12 +5,11 @@ import { useDispatch } from "react-redux";
 
 import { useProfile } from "../Components/Hooks/UserHooks";
 
-import { logoutUser } from "../slices/auth/login/thunk";
+import { logoutUser } from "../store/actions";
 
 const AuthProtected = (props) => {
   const dispatch = useDispatch();
   const { userProfile, loading, token } = useProfile();
-  
   useEffect(() => {
     if (userProfile && !loading && token) {
       setAuthorization(token);

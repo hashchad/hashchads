@@ -18,7 +18,7 @@ const WebAppsDropdown = () => {
     return (
         <React.Fragment>
             <Dropdown isOpen={isWebAppDropdown} toggle={toggleWebAppDropdown} className="topbar-head-dropdown ms-1 header-item">
-                <DropdownToggle tag="button" type="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle">
+                <DropdownToggle tag="button" type="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none">
                     <i className='bx bx-category-alt fs-22'></i>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-menu-lg p-0 dropdown-menu-end">

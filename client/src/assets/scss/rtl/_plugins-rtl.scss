@@ -209,3 +209,29 @@ html {
     right: 0;
     left: auto;
 }
+
+// nouislider
+
+.noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
+    right: 0 !important;
+    left: auto;
+}
+
+.nested-sortable-handle{
+    .handle{
+        right: 0;
+    }
+    .list-group-item{
+        padding-right: 42px;
+    }
+}
+
+// ck editable
+
+.ck.ck-editor__editable_inline[dir=ltr] {
+    text-align: right!important;
+}
+
+.ql-editor {
+    text-align: right;
+}

@@ -72,7 +72,7 @@ const ecomWidgets = [
         percentage: "+0.00",
         counter: "165.89",
         link: "Withdraw money",
-        bgcolor: "primary",
+        bgcolor: "danger",
         icon: "bx bx-wallet",
         decimals: 2,
         prefix: "$",

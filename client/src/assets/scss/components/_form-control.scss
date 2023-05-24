@@ -38,7 +38,7 @@
     }
 
     .form-control {
-        background-color: var(--#{$prefix}gray-200) !important;
-        border-color: var(--#{$prefix}border-color) !important;
+        background-color: var(--#{$prefix}gray-200);
+        border-color: var(--#{$prefix}border-color);
     }
   }

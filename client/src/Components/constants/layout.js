@@ -2,7 +2,7 @@ const layoutTypes = {
   HORIZONTAL: "horizontal",
   VERTICAL: "vertical",
   TWOCOLUMN: "twocolumn",
-  SEMIBOX:"semibox"
+  SEMIBOX : "semibox",
 };
 
 const layoutModeTypes = {

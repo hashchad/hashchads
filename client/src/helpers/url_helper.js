@@ -110,7 +110,8 @@ export const GET_MONTHLY_DATA = "/monthly-data";
 // Audiences Metrics
 export const GET_ALLAUDIENCESMETRICS_DATA = "/allAudiencesMetrics-data";
 export const GET_MONTHLYAUDIENCESMETRICS_DATA = "/monthlyAudiencesMetrics-data";
-export const GET_HALFYEARLYAUDIENCESMETRICS_DATA = "/halfyearlyAudiencesMetrics-data";
+export const GET_HALFYEARLYAUDIENCESMETRICS_DATA =
+  "/halfyearlyAudiencesMetrics-data";
 export const GET_YEARLYAUDIENCESMETRICS_DATA = "/yearlyAudiencesMetrics-data";
 
 // Users by Device
@@ -160,12 +161,11 @@ export const GET_USDPORTFOLIO_DATA = "/usdPortfolio-data";
 export const GET_EUROPORTFOLIO_DATA = "/euroPortfolio-data";
 
 // Market Graph
-var marketGraphBaseUrl = "https://api.coingecko.com/api/v3/coins/hedera-hashgraph/ohlc?vs_currency=usd&days="
-export const GET_ALLMARKETDATA_DATA = marketGraphBaseUrl + "max";
-export const GET_YEARMARKET_DATA = marketGraphBaseUrl + "365";
-export const GET_MONTHMARKET_DATA = marketGraphBaseUrl + "30";
-export const GET_WEEKMARKET_DATA = marketGraphBaseUrl + "7";
-export const GET_HOURMARKET_DATA = marketGraphBaseUrl + "max";
+export const GET_ALLMARKETDATA_DATA = "/allMarket-data";
+export const GET_YEARMARKET_DATA = "/yearMarket-data";
+export const GET_MONTHMARKET_DATA = "/monthMarket-data";
+export const GET_WEEKMARKET_DATA = "/weekMarket-data";
+export const GET_HOURMARKET_DATA = "/hourMarket-data";
 
 // Dashboard Crypto
 // Project Overview

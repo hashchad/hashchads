@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Col, Dropdown, DropdownMenu, DropdownToggle, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +13,7 @@ import image6 from "../../assets/images/products/img-6.png";
 import image5 from "../../assets/images/products/img-5.png";
 
 const MyCartDropdown = () => {
+    const cardItemTotal = useRef(null);
 
     const cartData = [
         { id: 1, img: image1, product: "Branded T-Shirts", quantity: 10, price: 32 },
@@ -33,8 +34,9 @@ const MyCartDropdown = () => {
 
     const removeItem = (ele) => {
         var price = ele.closest(".dropdown-item-cart").querySelector('.cart-item-price').innerHTML;
-        var subTotal = document.getElementById('cart-item-total').innerHTML;
-        document.getElementById('cart-item-total').innerHTML = subTotal - price;
+        console.log("cardItemTotal",cardItemTotal)
+        var subTotal = cardItemTotal.current.innerHTML;
+        cardItemTotal.current.innerHTML = subTotal - price;
 
         ele.closest(".dropdown-item-cart").remove();
         const element = document.querySelectorAll(".dropdown-item-cart").length;
@@ -52,7 +54,7 @@ const MyCartDropdown = () => {
     return (
         <React.Fragment>
             <Dropdown isOpen={isCartDropdown} toggle={toggleCartDropdown} className="topbar-head-dropdown ms-1 header-item">
-                <DropdownToggle type="button" tag="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle">
+                <DropdownToggle type="button" tag="button" className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none">
                     <i className='bx bx-shopping-bag fs-22'></i>
                     <span
                         className="position-absolute cartitem-badge topbar-badge fs-10 translate-middle badge rounded-pill bg-info">{cartItem}<span
@@ -109,7 +111,7 @@ const MyCartDropdown = () => {
                         <div className="d-flex justify-content-between align-items-center pb-3">
                             <h5 className="m-0 text-muted">Total:</h5>
                             <div className="px-2">
-                                <h5 className="m-0">$<span id="cart-item-total">3400</span></h5>
+                                <h5 className="m-0">$<span ref={cardItemTotal} id="cart-item-total">3400</span></h5>
                             </div>
                         </div>
 

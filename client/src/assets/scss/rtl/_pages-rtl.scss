@@ -2,6 +2,18 @@
 // _pages-rtl.scss
 //
 
+// Calander
+
+#external-events {
+    .external-event {
+        text-align: right;
+    }
+}
+
+.contact-list-title:after {
+    right: 50px;
+    left: 0;
+}
 
 .layout-rightside {
     margin-right: 0;
@@ -55,6 +67,16 @@
     .flatpickr-months {
         right: auto !important;
         left: 0px !important;
+    }
+}
+
+// Search 
+.search-box{
+    .form-control{
+        padding-right: 40px;
+    }
+    .search-icon{
+        right: 13px;
     }
 }
 
@@ -180,6 +202,22 @@
     }
 }
 
+// FIle maneger
+
+.file-manager-menu {
+    li {
+        .sub-menu {
+            li {
+                padding-right: 25px;
+                padding-left: 0;
+                &:before{
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+
 .profile-timeline {
     .accordion-item {
         &::before {
@@ -297,7 +335,7 @@
         &::after {
             left: 100%;
             right: auto;
-            border-color: transparent transparent transparent var(--vz-card-bg);
+            border-color: transparent transparent transparent var(--vz-card-bg-custom);
         }
 
         &::before {
@@ -328,7 +366,7 @@
                 right: 30px;
                 left: auto;
                 margin-right: 0;
-                border-color: transparent transparent var(--vz-card-bg) transparent;
+                border-color: transparent transparent var(--vz-card-bg-custom) transparent;
             }
         }
     }
@@ -648,9 +686,9 @@
     left: 60px;
 }
 
-.form-check {
-    text-align : right;
-}
+// .form-check {
+//     text-align : right;
+// }
 
 
 .table-card{
@@ -659,10 +697,12 @@
 
         &:first-child{
             padding-right: 16px;
+            padding-left: 0;
         }
 
         &:last-child{
             padding-left: 16px;
+            padding-right: 0;
         }
     }
 
@@ -670,3 +710,23 @@
         border-top-width: $table-border-width;
     }
 }
+
+.main-chart {
+    .chart-border-left {
+        border-right: 1.4px solid $border-color;
+        border-left: none;
+    }
+}
+
+
+.marketplace-swiper {
+    .swiper-button-next,
+    .swiper-button-prev {
+      left: 16px !important;
+      right: auto !important;
+    }
+    .swiper-button-prev {
+      left: 58px !important;
+      right: auto !important;
+    }
+  }

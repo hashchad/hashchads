@@ -18,8 +18,8 @@ const NonAuthLayout = ({ children }) => {
             document.body.setAttribute("data-layout-mode", "light");
         }
         return () => {
-            document.body.removeAttribute("data-layout-mode");
-        };
+            document.body.removeAttribute("data-layout-mode")
+        }
     }, [layoutModeType]);
     return (
         <div>

@@ -943,8 +943,8 @@ const team = [
         designation: "Full Stack Developer",
         projectCount: 352,
         taskCount: 376,
-        bgColor: "light",
-        textColor: "primary",
+        bgColor: "danger",
+        textColor: "danger",
     },
     {
         id: 3,
@@ -974,8 +974,8 @@ const team = [
         designation: "Team Leader & Web Developer",
         projectCount: 201,
         taskCount: 263,
-        bgColor: "light",
-        textColor: "primary",
+        bgColor: "success",
+        textColor: "success",
 
     },
     {
@@ -997,8 +997,8 @@ const team = [
         designation: "Front-End Developer",
         projectCount: 352,
         taskCount: 376,
-        bgColor: "light",
-        textColor: "primary",
+        bgColor: "info",
+        textColor: "info",
     },
     {
         id: 8,
@@ -1050,8 +1050,8 @@ const team = [
         designation: "Backend Developer",
         projectCount: 145,
         taskCount: 210,
-        bgColor: "light",
-        textColor: "primary",
+        bgColor: "success",
+        textColor: "success",
 
     },
 

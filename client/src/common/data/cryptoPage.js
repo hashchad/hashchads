@@ -585,7 +585,7 @@ const watchlist = [
         percentage: "+0.63%",
         percentageClass: "success",
         coinNameAbbr: "BTC",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Bitcoin",
             data: [85, 68, 35, 90, 8, 11, 26, 54]
@@ -641,7 +641,7 @@ const watchlist = [
         percentage: "+16.38%",
         percentageClass: "success",
         coinNameAbbr: "DASH",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Dash",
             data: [24, 68, 39, 86, 29, 42, 11, 58]
@@ -655,7 +655,7 @@ const watchlist = [
         percentage: "+0.36%",
         percentageClass: "success",
         coinNameAbbr: "MKR",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Dash",
             data: [13, 76, 12, 85, 25, 60, 9, 54]
@@ -669,7 +669,7 @@ const watchlist = [
         percentage: "32.07%",
         percentageClass: "success",
         coinNameAbbr: "NEO",
-        chartsColor: "#0ab39c",
+        chartsColor: "#45CB85",
         series: [{
             name: "Neo",
             data: [9, 66, 41, 89, 12, 36, 25, 54]

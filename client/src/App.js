@@ -1,11 +1,11 @@
 import React from 'react';
-
+import { BrowserRouter } from "react-router-dom";
 //import Scss
 import './assets/scss/themes.scss';
 
 //imoprt Route
 import Route from './Routes';
-
+import { useGlobalData, useGlobalChartData } from './contexts/GlobalData'
 // Import Firebase Configuration file
 // import { initFirebaseBackend } from "./helpers/firebase_helper";
 
@@ -13,10 +13,9 @@ import Route from './Routes';
 import fakeBackend from "./helpers/AuthType/fakeBackend";
 
 // Activating fake backend
-fakeBackend();
 
 // const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_APIKEY,
+//   apiKey: process.env.REACT_APP_API_KEY,
 //   authDomain: process.env.REACT_APP_AUTHDOMAIN,
 //   databaseURL: process.env.REACT_APP_DATABASEURL,
 //   projectId: process.env.REACT_APP_PROJECTID,
@@ -26,13 +25,19 @@ fakeBackend();
 //   measurementId: process.env.REACT_APP_MEASUREMENTID,
 // };
 
-// // init firebase backend
+// init firebase backend
 // initFirebaseBackend(firebaseConfig);
 
 function App() {
+  const globalData = useGlobalData()
+  const globalChartData = useGlobalChartData()
   return (
     <React.Fragment>
-      <Route />
+      {/* {globalData &&
+        Object.keys(globalData).length > 0 && */}
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Route />
+        </BrowserRouter>
     </React.Fragment>
   );
 }

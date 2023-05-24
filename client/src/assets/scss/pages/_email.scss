@@ -84,6 +84,7 @@
     }
   }
 }
+
 .email-topbar-link {
   .btn-ghost-secondary {
     color: $text-muted;
@@ -380,11 +381,5 @@
     @media (max-width: 1349.98px) {
       height: calc(100vh - 252px);
     }
-  }
-}
-
-.email-chat-element {
-  .chat-conversation1 {
-    height: 250px !important;
   }
 }

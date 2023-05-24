@@ -237,6 +237,7 @@ const tileBoxes4 = [
         bgColor: "bg-success",
         icon: "bx bx-shopping-bag",
         iconClass: "light",
+        iconClass1: "success",
         label: "Total Sales",
         labelClass: "white-50",
         counter: "2045",
@@ -255,6 +256,7 @@ const tileBoxes4 = [
         id: 2,
         icon: "bx bxs-user-account",
         iconClass: "warning",
+        iconClass1: "white",
         label: "Number of Users",
         labelClass: "muted",
         counter: "7522",
@@ -272,6 +274,7 @@ const tileBoxes4 = [
         id: 3,
         icon: "bx bxs-badge-dollar",
         iconClass: "danger",
+        iconClass1: "white",
         label: "Total Revenue",
         labelClass: "muted",
         counter: "2845.05",
@@ -289,6 +292,7 @@ const tileBoxes4 = [
         id: 4,
         icon: "bx bx-store-alt",
         iconClass: "info",
+        iconClass1: "white",
         label: "Number of Stores",
         labelClass: "muted",
         counter: "405",
@@ -303,6 +307,7 @@ const tileBoxes4 = [
         prefix: "",
     },
 ];
+
 
 const tileBoxes5 = [
     {

@@ -84,30 +84,6 @@
 
 .file-manager-content-scroll{
     height: calc(100vh - 185px);
-    overflow-y: auto;
-
-        &::-webkit-scrollbar {
-            -webkit-appearance: none;
-        }
-    
-        &::-webkit-scrollbar:vertical {
-            width: 12px;
-        }
-    
-        &::-webkit-scrollbar:horizontal {
-            height: 12px;
-        }
-    
-        &::-webkit-scrollbar-thumb {
-            background-color: rgba(var(--#{$prefix}dark-rgb), .075);
-            border-radius: 10px;
-            border: 2px solid var(--#{$prefix}card-bg-custom);
-        }
-    
-        &::-webkit-scrollbar-track {
-            border-radius: 10px;
-            background-color: var(--#{$prefix}card-bg-custom);
-        }
     @media (max-width: 991.98px) {
         height: calc(100vh - 144px);
     }

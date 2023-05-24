@@ -4,7 +4,22 @@
 
 ol,
 ul {
-    padding-right: 0px;
+    padding-right: 2rem;
+    padding-left: auto;
+}
+
+.list-unstyled{
+    padding-right: 0;
+}
+
+// Icon demo ( Demo only )
+.icon-demo-content {
+    i {
+        margin-left: 10px;
+    }
+    svg {
+        margin-left: 10px;
+    }
 }
 
 // Margin and Padding
@@ -97,6 +112,17 @@ ul {
     }
 }
 
+.me-2 {
+    margin-right: 0.5rem ;
+}
+
+// badge-border
+
+.badge-border {
+    border-right: 2px solid;
+    border-left: 0;
+}
+
 
 // Responsive alignment
 
@@ -139,9 +165,126 @@ ul {
     }
 }
 
+
+// alert-label-icon
+
+.alert-additional { 
+    padding: 0 !important;
+}
+
+// Alert border left example
+
+.alert-border-left {
+    border-right: 3px solid;
+    border-left: 1px solid var(--vz-alert-border-color) !important;
+}
+
+// alert-label-icon
+
+
+.rounded-label .label-icon{
+    border-radius: 30px 0px 0px 30px;
+}
+
+
+@each $color, $value in $theme-colors {
+
+    .label-arrow {
+        &.alert-#{$color} {
+            .label-icon {
+                color: set-color-from-background($value);
+                background-color: $value;
+                &:after {
+                    border-color: transparent !important;
+                    border-right-color: $value !important;
+                }
+            }
+        }
+    }
+
+    .badge-label {
+        margin-right: 8px;
+        &.bg-#{$color} {
+            &:before {
+                border-color: transparent;
+                border-left-color: $value;
+                right: -14px;
+                left: auto;
+            }
+        }
+    }
+
+
+
+  // alert border left
+  .alert-border-left {
+    &.alert-#{$color} {
+        border-right-color: $value;
+    }
+}
+}
+
+.alert-label-icon {
+    padding-right: 60px !important;
+    .label-icon {
+        right: 0;
+    }
+
+    // label arrow
+    &.label-arrow {
+        overflow: hidden;
+        .label-icon {
+            &:after {
+                content: "";
+                position: absolute;
+                border: 6px solid transparent;
+                border-right-color: $primary;
+                left: -12px;
+                right: auto;
+            }
+        }
+    }
+}
+
+
+
+
+.alert-dismissible {
+    padding-left: $alert-dismissible-padding-r;
+    padding-right: $alert-padding-x;
+    // Adjust close link position
+    .btn-close {
+      left: 0;
+      right: auto;
+    }
+  }
+
+// border
+
+.border-start-0 {
+    border-right: 0 !important;
+    border-left: 1px dashed $border-color !important;
+}
+
+.border-end-dashed{
+    border-left-style: dashed !important;
+}
+
+.border-end{
+    border-left: var(--vz-border-width) var(--vz-border-style) var(--vz-border-color) ;
+    border-right: transparent !important;
+}
+
+//  list
+
+.list-inline-item:not(:last-child) {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+
 // Breadcrumb
 .breadcrumb-item {
-
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     +.breadcrumb-item {
         padding-right: $breadcrumb-item-padding-x;
@@ -159,10 +302,31 @@ ul {
 
 //Buttons 
 
+// Switch - Right
+
+.form-switch-right {
+    padding-left: 0.8em !important;
+
+    .form-check-input {
+        float: left !important;
+        margin-right: 0 !important;
+        margin-left: $form-check-padding-start * -1 !important;
+    }
+    label {
+        margin-left: 1rem;
+    }
+}
+
+.form-switch .form-check-input:checked {
+    background-position: left center !important;
+}
+
+
 //button with icon
 .btn-label {
     position: relative;
     padding-right: 44px;
+    padding-left: 0.9rem;
 
     .label-icon {
         right: -$btn-border-width;
@@ -179,18 +343,159 @@ ul {
     }
 }
 
-.btn-group>:not(.btn-check)+.btn {
-    border-radius: 0px;
-    border-top-left-radius: $btn-border-radius;
-    border-bottom-left-radius: $btn-border-radius;
+.form-switch-right label {
+    margin-bottom: 0;
+}
+
+.form-check {
+    text-align: right;
+    padding-right: 1.6em !important;
+}
+
+.form-check .form-check-input {
+    float: right;
+    margin-right: -1.6em;
+    margin-left: auto;
+}
+
+// Floating Labels
+
+.form-floating>label{
+    left: auto;
+    right: 0;
+    transform-origin: 100% 0;
 }
 
 
-.btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
-    border-radius: 0px;
-    border-top-right-radius: $btn-border-radius;
-    border-bottom-right-radius: $btn-border-radius;
+.form-floating>.form-control-plaintext~label, 
+.form-floating>.form-control:focus~label, 
+.form-floating>.form-control:not(:placeholder-shown)~label, 
+.form-floating>.form-select~label{
+    transform: scale(.85) translateY(-.5rem) translateX(-.15rem);
 }
+
+
+// switch
+
+.form-switch-md{
+    padding-right: 2.5rem;
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid {
+    padding-left: calc(1.5em + 1rem);
+    background-position: left calc(0.375em + 0.25rem) center;
+    padding-right: 0.9rem;
+}
+
+
+
+.form-switch-md {
+    .form-check-input {
+        right: -0.5rem;
+        left: auto;
+    }
+}
+
+.form-switch-lg {
+    .form-check-input {
+        right: -0.75rem;
+        left: auto;
+    }
+}
+
+.form-switch {
+    padding-right: 2.5em !important;
+}
+
+.form-switch .form-check-input{
+    margin-right: -2.5em;
+}
+
+
+
+.form-switch .form-check-input{
+    background-position: right center;
+}
+
+.form-select{
+    background-position: left 0.9rem center;
+    padding: 0.5rem 0.9rem 0.5rem 2.7rem;
+}
+
+// vertical nav step
+.vertical-navs-step {
+    .nav {
+        .nav-link {
+            text-align: right;
+            .step-icon {
+                float: right;
+            }
+        }
+    }
+}
+
+// card radio
+.card-radio {
+    padding: 0;
+    .form-check-label {
+        padding-left: 32px;
+        padding-right: 1rem;
+    }
+    .form-check-input {
+        &:checked+.form-check-label {
+            &:before {
+                left: 6px;
+                right: auto;
+            }
+        }
+    }
+}
+
+
+.list-inline-item:not(:last-child) {
+    margin-left: 0.5rem;
+}
+
+.btn-group > :not(.btn-check:first-child) + .btn,
+.btn-group > .btn-group:not(:first-child) {
+    margin-right: -1px;
+    margin-left: auto;
+}
+
+.btn-group > .btn:nth-child(n + 3), .btn-group > :not(.btn-check) + .btn{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important; 
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem; 
+}
+
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle){
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+// .btn-group>:not(.btn-check)+.btn {
+//     border-top-left-radius: $btn-border-radius;
+//     border-bottom-left-radius: $btn-border-radius;
+// }
+
+// .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+//     border-top-left-radius: 0;
+//     border-bottom-left-radius: 0;
+// }
+
+// .btn-group > :not(.btn-check:first-child) + .btn{
+//     margin-right: -1px;
+// }
+
+
+// .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+//     border-radius: 0px;
+//     border-top-right-radius: $btn-border-radius;
+//     border-bottom-right-radius: $btn-border-radius;
+// }
 
 
 // Dropdown
@@ -201,6 +506,34 @@ ul {
 }
 
 // Nav
+
+.nav{
+    padding-right: 0;
+}
+
+// Step arrow nav
+.step-arrow-nav {
+    .nav {
+        .nav-link {
+            &::before {
+                left: -14px;
+                right: auto;
+            }
+            &.done {
+                &::before {
+                    border-right-color: transparent;
+                    border-left-color: transparent;
+                }
+            }
+            &.active {
+                &::before {
+                    border-right-color: rgba($primary, 0.1);
+                    border-left-color: transparent;
+                }
+            }
+        }
+    }
+}
 
 .custom-verti-nav-pills {
     .nav-link {
@@ -223,9 +556,23 @@ ul {
 }
 
 // Accordion 
+
+// rtl
+
+.custom-accordionwithicon {
+    .accordion-button::after{
+        transform: rotate(180deg);
+    }
+}
+
+
 .accordion-button::after {
     margin-right: auto;
     margin-left: 0px;
+}
+
+.accordion-button{
+    text-align: right;
 }
 
 // Accordion with icon
@@ -248,20 +595,21 @@ ul {
 }
 
 //Offcanvas
-.offcanvas-start {
-    top: 0;
-    right: 0;
-    left: 0px;
-    border-left: 1px solid var(--vz-border-color);
-    transform: translateX(100%)
-}
 
-.offcanvas-end {
+.offcanvas.offcanvas-end {
     top: 0;
     left: 0;
     right: auto;
     border-right: 1px solid var(--vz-border-color);
     transform: translateX(-100%)
+}
+
+.offcanvas.offcanvas-start {
+    top: 0;
+    right: 0;
+    left: 0px;
+    border-left: 1px solid var(--vz-border-color);
+    transform: translateX(100%)
 }
 
 //Progress
@@ -642,3 +990,8 @@ $value in $theme-colors {
 .dropdown-menu{
     text-align: right;
 }
+
+code[class*="language-"], pre[class*="language-"]{
+    text-align: right;
+}
+

@@ -46,6 +46,7 @@ const CustomersGlobalFilter = () => {
             ],
         },
     ];
+
     return (
         <React.Fragment>
             <Col xl={7}>
@@ -70,8 +71,8 @@ const CustomersGlobalFilter = () => {
                         <div>
                             <Select
                                 value={customerStatus}
-                                onChange={(e) => {
-                                    handlecustomerStatus(e.value);
+                                onChange={() => {
+                                    handlecustomerStatus();
                                 }}
                                 options={customerstatus}
                                 name="choices-single-default"

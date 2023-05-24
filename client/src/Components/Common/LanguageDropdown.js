@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
-import { get } from "lodash";
+import { get, map } from "lodash";
 
 //i18n
 import i18n from "../../i18n";
@@ -31,7 +31,7 @@ const LanguageDropdown = () => {
     return (
         <React.Fragment>
             <Dropdown isOpen={isLanguageDropdown} toggle={toggleLanguageDropdown} className="ms-1 topbar-head-dropdown header-item">
-                <DropdownToggle className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" tag="button">
+                <DropdownToggle className="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" tag="button">
                     <img
                         src={get(languages, `${selectedLang}.flag`)}
                         alt="Header Language"
@@ -40,7 +40,7 @@ const LanguageDropdown = () => {
                     />
                 </DropdownToggle>
                 <DropdownMenu className="notify-item language py-2">
-                    {Object.keys(languages).map(key => (
+                    {map(Object.keys(languages), key => (
                         <DropdownItem
                             key={key}
                             onClick={() => changeLanguageAction(key)}

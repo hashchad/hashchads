@@ -1,0 +1,14 @@
+Hashchad project
+
+1. Run the frontend
+  - Edit src/env.js and change the BASE_URL value(http://{YOUR_BACKEND_URL}:5005
+  - Excuting the following command
+    cd client
+    npm start
+
+2. Run the backend (Excuting the following command)
+
+    cd server
+    npm start
+
+3. Connect the URL(http://localhost:3000) in your browser.
